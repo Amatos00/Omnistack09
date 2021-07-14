@@ -11,7 +11,7 @@ export default function Dashboard() {
         headers: { user_id }
       });
 
-      console.log(response.data);
+      setSpots(response.data);
     }
 
     loadSpots();
@@ -20,11 +20,13 @@ export default function Dashboard() {
   return (
     <>
       <ul className="spot-list">
-        {spots.map(spots => {
-          <li>
-            <header></header>
+        {spots.map(spot => (
+          <li key={spot._id}>
+            <header />
+            <strong>{spot.company}</strong>
+            <span>{spot.price}</span>
           </li>
-        })}
+        ))}
       </ul>
     </>
     )
